@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #dbeafe, #f0f9ff);
+      padding: 30px;
+    }
+
+    h2 {
+      color: #1e3a8a;
+      font-size: 42px;
+      animation: bounce 2s infinite;
+    }
+
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+      transform: scale(1.05);
+    }
+
+    #result {
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .show {
+      opacity: 1;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .city-heading {
+      font-size: 34px;
+      color: #c026d3;
+      margin-bottom: 20px;
+    }
+
+    .weather-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .weather-card {
+      background: #ffffff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-size: 16px;
+      min-width: 150px;
+      transition: transform 0.3s ease;
+    }
+
+    .weather-card:hover {
+      transform: translateY(-5px);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🌦️ Real-Time Weather Analyzer</h2>
+
+  <input type="text" id="cityInput" placeholder="Enter city name">
+  <button onclick="fetchWeather()">Get Weather</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function fetchWeather() {
+      const city = document.getElementById('cityInput').value;
+      const apiKey = "a8aae1e70a51db1684c0a3ba01aee2d7";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const resultDiv = document.getElementById('result');
+
+        if (response.ok) {
+          const temp = data.main.temp;
+          const humidity = data.main.humidity;
+          const pressure = data.main.pressure;
+          const wind = (data.wind.speed * 3.6).toFixed(1);
+          const visibility = data.visibility ? (data.visibility / 1000).toFixed(1) : "N/A";
+          const weather = data.weather[0].description;
+
+          resultDiv.innerHTML = `
+            <h3 class="city-heading">📍 ${city}</h3>
+            <div class="weather-container">
+              <div class="weather-card">🌡️ Temperature: ${temp} °C</div>
+              <div class="weather-card">💧 Humidity: ${humidity}%</div>
+              <div class="weather-card">🌬️ Wind: ${wind} km/h</div>
+              <div class="weather-card">🔎 Visibility: ${visibility} km</div>
+              <div class="weather-card">☁️ Weather: ${weather}</div>
+              <div class="weather-card">🧭 Pressure: ${pressure} hPa</div>
+            </div>
+          `;
+
+          document.body.style.background = temp > 30
+            ? 'linear-gradient(to right, #fef3c7, #fde68a)'
+            : temp < 10
+            ? 'linear-gradient(to right, #e0f2fe, #c7d2fe)'
+            : 'linear-gradient(to right, #d1fae5, #f0fdf4)';
+
+          resultDiv.classList.add('show');
+        } else {
+          resultDiv.innerHTML = "❌ Error: " + data.message;
+          resultDiv.classList.add('show');
+        }
+      } catch (error) {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = "❌ Error connecting to API.";
+        resultDiv.classList.add('show');
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+<!--
+  🌐 Live Weather Analyzer
+  🔗 Visit the live site: https://madhu-shaw9.github.io/demo-repo/
+  📄 Description: This is a weather analyzer project built using HTML, CSS, and JavaScript.
+-->
+
