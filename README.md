@@ -71,7 +71,7 @@ Predict weather temperature and classify weather types based on:
 ---
 
 ## 🛠 How to Run
-1. Clone the repository:
+
    ```bash
    git clone https://github.com/Madhu-Shaw9/demo-repo.git
    🔗 Visit the live site: https://madhu-shaw9.github.io/demo-repo/
