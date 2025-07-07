@@ -1,14 +1,77 @@
 # demo-repo
 My first repository on GitHub
-# 👋 Hello, I'm Madhu Shaw
-
-🎯 Aspiring Data Analyst | Final Year Student  
-📍 West Bengal, India  
-💻 Skills: Python | SQL | Excel | Machine Learning  
-🌱 Currently learning: Data Analysis & ML Projects  
-💼 Open to internship/job opportunities  
 🔗 [LinkedIn](https://www.linkedin.com/in/madhushaw)
 
 ---
 
-✅ This is my first GitHub repository. More projects coming soon!
+# crop-prediction-project
+Crop Prediction Using Machine Learning
+
+# 🌦 Weather Forecasting Using Machine Learning
+
+This project predicts temperature and weather types using various machine learning models and visualizations.
+
+---
+
+## 📂 Project Files
+
+| File Name                     | Description                                 |
+|-------------------------------|---------------------------------------------|
+| weather_Forecast.ipynb       | Jupyter Notebook with ML models & results    |
+| WeatherData.csv              | Dataset containing weather data              |
+| weather.html                 | HTML visualization file                      |
+| README.md                    | Project overview and documentation           |
+
+---
+
+## 📊 Problem Statement
+Predict weather temperature and classify weather types based on:
+- Humidity
+- Wind Speed
+- Pressure
+- Visibility
+- Temperature
+- Weather Conditions
+
+---
+
+## 🚀 Tools & Technologies
+- *Python*
+- *Pandas, **NumPy*
+- *Matplotlib, **Seaborn*
+- *Scikit-learn*
+
+---
+
+## ✅ Models Used
+- Linear Regression
+- Decision Tree
+- Random Forest
+- K-Nearest Neighbors (KNN)
+- Support Vector Machine (SVM)
+- Naive Bayes
+
+---
+
+## 📈 Results (Example)
+| Model                    | Accuracy |
+|--------------------------|----------|
+| Random Forest             | 97.5%   |
+| Decision Tree             | 95.0%   |
+| Linear Regression (R²)    | 92.8%   |
+
+---
+
+## 🌟 Visualizations
+✔ Heatmaps  
+✔ Pairplots  
+✔ Scatter plots with regression lines  
+✔ Interactive weather.html file
+
+---
+
+## 🛠 How to Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Madhu-Shaw9/demo-repo.git
+
